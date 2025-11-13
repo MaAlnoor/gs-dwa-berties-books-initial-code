@@ -8,7 +8,16 @@ router.get('/search',function(req, res, next){
 
 router.get('/search-result', function (req, res, next) {
     //searching in the database
-    res.send("You searched for: " + req.query.keyword)
+    //res.send("You searched for: " + req.query.keyword)
+
+    let sqlquery = "SELECT * FROM books WHERE name=${req.query.keyword}"; // query database to get all the books
+    // execute sql query
+    db.query(sqlquery, (err, result) => {
+        if (err) {
+            next(err)
+        }
+        res.render("searchedbook.ejs", {searchedBooks:result})
+     });
 });
 
 router.get('/list', function(req, res, next) {
