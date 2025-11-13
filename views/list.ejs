@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Whats available in <%=shopData.shopName%></title>
+    <link rel="stylesheet"  type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1><%=shopData.shopName%></h1>
+    <h1>Here are the books we sell:</h1>
+    
+    <ul>
+      <% availableBooks.forEach(function(book) { %>
+        <li>
+            <strong><%= book.name %></strong> - £<%= parseFloat(book.price).toFixed(2) %>
+        </li>
+      <% }); %>
+    </ul>
+
+  </body>
+</html>
