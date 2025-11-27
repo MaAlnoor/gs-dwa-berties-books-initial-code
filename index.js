@@ -5,6 +5,7 @@ const path = require('path')
 var mysql = require('mysql2');
 var session = require ('express-session');
 require('dotenv').config();
+const expressSanitizer = require('express-sanitizer');
 
 // Create the express application object
 const app = express()
@@ -43,6 +44,9 @@ app.use(session({
         expires: 600000
     }
 }))
+
+// Create an input sanitizer
+app.use(expressSanitizer());
 
 // Load the route handlers
 const mainRoutes = require("./routes/main")

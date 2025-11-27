@@ -47,3 +47,10 @@ A new route /users/audit was implemented to retrieve all the audit entries from 
 
 
 I added access control to the search page, audit page, bargain books page, and add-book page so only logged-in users can access them. The About and Register pages remain public because users can not log in if they are not registered and new users would want to see what the website is about. Testing confirmed that protected pages redirect unauthenticated users to the login page, while logged-in users can access them normally.
+
+
+I added server-side validation to the pages where users submit information, such as the registration form, login form and the book-adding page. These checks make sure users enter valid details — for example, the username has the right length, the email is valid, the password is at least 8 characters, and book details are filled in properly. I didn’t add validation to simple pages like the About page or pages that don’t take any user input, such as the book list or bargain books. The goal was to ensure the important forms are safe and reliable without overcomplicating the rest of the site.
+
+I added sanitisation to all free-text fields on the registration form, including the first name, last name, and username fields, to protect the site from XSS attacks and ensure that no harmful HTML or script code can be submitted. I did not apply sanitisation to the email or password fields; the email is validated separately using express-validator, and passwords must not be modified before hashing. This approach protects user input where necessary without breaking important fields that rely on exact values.
+
+I added sanitisation to any part of the site where users can submit free-text input, such as the registration form (first name, last name, username), the add-book form (book name). These fields could otherwise be used to inject HTML or JavaScript, so sanitisation helps protect against XSS attacks. I did not sanitise fields like passwords, emails, prices, or system values, because these need to stay unchanged for hashing, validation, or database accuracy. Only the fields that present an actual XSS risk were sanitised.
