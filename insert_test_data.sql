@@ -2,4 +2,12 @@
 
 USE berties_books;
 
-INSERT INTO books (name, price)VALUES('Brighton Rock', 20.25),('Brave New World', 25.00), ('Animal Farm', 12.99), ('Diary of a Wimpy Kid', 8.99),('Harry Potter', 20.00) ;
+
+INSERT INTO users (username, first_name, last_name, email, hashedPassword)
+VALUES (
+    'gold',
+    'Gold',
+    'Smiths',
+    'gold@smiths.co.uk',
+    '$2b$12$CCDHKU9ztSaOeHRuvR2vkegiPAoFINLhdJHB63qDhZx6jpKrVVA.C'
+);
