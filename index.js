@@ -60,10 +60,6 @@ app.use('/users', usersRoutes)
 const booksRoutes = require('./routes/books')
 app.use('/books', booksRoutes)
 
-// Load the route handlers for /weather
-const weatherRoutes = require('./routes/weather')
-app.use('/weather', weatherRoutes)
-
 // Load the route handlers for /api
 const apiRoutes = require('./routes/api')
 app.use('/api', apiRoutes)
